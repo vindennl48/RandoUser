@@ -11,3 +11,7 @@
 .column .title {
   text-align: center;
 }
+
+.tableBody {
+  overflow-x: auto;
+}

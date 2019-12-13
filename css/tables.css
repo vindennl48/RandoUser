@@ -5,6 +5,7 @@ table.customTable {
   background-color: #EEE;
   width:            100%;
   text-align:       left;
+  white-space:      nowrap;
   border-collapse:  collapse;
 }
 
