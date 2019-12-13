@@ -1,6 +1,6 @@
 let RandomUser = {
 
-  get_users: function(numUsers) {
+  getUsers: function(numUsers, sortFunc) {
     $.ajax({
       url:      'https://randomuser.me/api/',
       dataType: 'json',
@@ -9,7 +9,13 @@ let RandomUser = {
         nat:     'US,CA'
       },
       success: function(data) {
-        console.log(data['results']);
+        let results = data['results'];
+
+        results.sort(sortFunc);
+
+        results.forEach(function(item, index) {
+          let user = new User(item);
+        });
       }
     });
   }
