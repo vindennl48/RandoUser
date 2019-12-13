@@ -19,3 +19,10 @@ body {
   padding:          10vh 10vw;
   background-color: #536653;
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    height:  100vh;
+    padding: 3vw 3vw;
+  }
+}
