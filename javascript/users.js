@@ -67,5 +67,8 @@ class User {
     row.appendChild( this.createColumn( this.birthday()  ) );
 
     userData.appendChild(row);
+
+    document.getElementById("tableBodyDiv").hidden   = false;
+    document.getElementById("loadingCubeDiv").hidden = true;
   }
 }

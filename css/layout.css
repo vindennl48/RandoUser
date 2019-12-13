@@ -15,3 +15,8 @@
 .tableBody {
   overflow-x: auto;
 }
+
+.loadingCube {
+  padding-top: 10vh;
+  text-align:  center;
+}
