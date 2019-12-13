@@ -1,0 +1,35 @@
+/* -- Custom Table Style -- */
+
+table.customTable {
+  font-family:      Arial, Helvetica, sans-serif;
+  background-color: #EEE;
+  width:            100%;
+  text-align:       left;
+  border-collapse:  collapse;
+}
+
+table.customTable td, table.customTable th {
+  padding: 10px 10px;
+}
+
+table.customTable tbody {
+  border: 1px solid #CCC;
+}
+
+table.customTable tbody td {
+  color: #555;
+}
+
+table.customTable tr:nth-child(even) {
+  background: #DDD;
+}
+
+table.customTable thead {
+  border:     1px solid #49CE53;
+  background: #49CE53;
+}
+
+table.customTable thead th {
+  font-weight: bold;
+  color:       #FFF;
+}
