@@ -11,11 +11,11 @@ let RandomUser = {
       success: function(data) {
         let results = data['results'];
 
-        results.sort(sortFunc);
-
         results.forEach(function(item, index) {
-          let user = new User(item);
+          new User(item);
         });
+
+        User.reSort(sortFunc);
       }
     });
   }

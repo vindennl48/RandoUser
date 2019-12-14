@@ -1,7 +1,14 @@
 (function() {
 
   document.addEventListener("DOMContentLoaded", function() {
-    RandomUser.get_users(20, Sort.LastName);
+    RandomUser.getUsers(20, Sort.lastName);
+
+    let elms = document.querySelectorAll("[data-sort]");
+    elms.forEach(function(item, index,) {
+      item.addEventListener("click", function() {
+        Sort.onClick(item);
+      });
+    });
   });
 
 }).call();

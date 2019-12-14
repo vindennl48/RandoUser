@@ -1,13 +1,41 @@
 class User {
-  constructor(rawData) {
-    this.rawData = rawData;
-    this.createTableEntry();
-  }
+  static users = [];
 
-  createColumn(data) {
+  static createColumn(data) {
     let elm       = document.createElement("td");
     elm.innerHTML = data;
     return elm;
+  }
+
+  static getUserData() {
+    return document.getElementById("userData");
+  }
+
+  static isLoading(a) {
+    document.getElementById("tableBodyDiv").hidden   = a ? true : false;
+    document.getElementById("loadingCubeDiv").hidden = a ? false : true;
+  }
+
+  static reSort(sortFunction) {
+    // Unhide the loading cube
+    User.isLoading(true);
+
+    // Clean out html table
+    let userData = User.getUserData();
+    while (userData.firstChild) {
+      userData.removeChild(userData.firstChild);
+    }
+    
+    // Reload table with sorted users
+    User.users.sort(sortFunction);
+    User.users.forEach(function(item, index) {
+      item.createTableEntry();
+    });
+  }
+
+  constructor(rawData) {
+    this.rawData = rawData;
+    User.users.push(this);
   }
 
   firstName() {
@@ -40,6 +68,10 @@ class User {
     return dob.format('MMM DD, YYYY');
   }
 
+  dobDate() {
+    return new Date(this.rawData['dob']['date']);
+  }
+
   birthday() {
     let today = new Date();
     let dob   = new Date(this.rawData['dob']['date']);
@@ -56,19 +88,18 @@ class User {
   }
 
   createTableEntry() {
-    let userData = document.getElementById("userData");
+    let userData = User.getUserData();
     let row      = document.createElement("tr");
 
-    row.appendChild( this.createColumn( this.firstName() ) );
-    row.appendChild( this.createColumn( this.lastName()  ) );
-    row.appendChild( this.createColumn( this.gender()    ) );
-    row.appendChild( this.createColumn( this.country()   ) );
-    row.appendChild( this.createColumn( this.dob()       ) );
-    row.appendChild( this.createColumn( this.birthday()  ) );
+    row.appendChild( User.createColumn( this.firstName() ) );
+    row.appendChild( User.createColumn( this.lastName()  ) );
+    row.appendChild( User.createColumn( this.gender()    ) );
+    row.appendChild( User.createColumn( this.country()   ) );
+    row.appendChild( User.createColumn( this.dob()       ) );
+    row.appendChild( User.createColumn( this.birthday()  ) );
 
     userData.appendChild(row);
 
-    document.getElementById("tableBodyDiv").hidden   = false;
-    document.getElementById("loadingCubeDiv").hidden = true;
+    User.isLoading(false);
   }
 }
