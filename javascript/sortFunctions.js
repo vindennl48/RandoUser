@@ -124,7 +124,19 @@ let Sort = {
     let elms = document.querySelectorAll("[data-direction]");
     elms.forEach(function(item, index) {
       item.removeAttribute("data-direction");
+      item.querySelector("span").className = "";
     });
+  },
+
+  setCarrot: function(self) {
+    let direction = self.dataset.direction;
+    self.querySelector("span").className = "";
+
+    if ( direction === "asc" ) {
+      self.querySelector("span").classList.add("arrow-up");
+    } else if ( direction === "desc" ){
+      self.querySelector("span").classList.add("arrow-down");
+    }
   },
 
   onClick: function(self) {
@@ -139,6 +151,8 @@ let Sort = {
       Sort.removeSortDirection();
       self.dataset.direction = "asc";
     }
+
+    Sort.setCarrot(self);
 
     if ( self.dataset.direction === "asc" ) {
       User.reSort(Sort[sortFunction]);

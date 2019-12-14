@@ -32,4 +32,40 @@ table.customTable thead {
 table.customTable thead th {
   font-weight: bold;
   color:       #FFF;
+  white-space:  nowrap;
 }
+
+table.customTable th {
+  cursor: pointer;
+
+  /* No Select */
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+th div {
+  display:       grid;
+  grid-template: auto / auto 100%;
+  align-items:   center;
+}
+
+th .arrow-up {
+  width:         0;
+  height:        0;
+  border-left:   7px solid transparent;
+  border-right:  7px solid transparent;
+  border-bottom: 7px solid #FFF;
+}
+
+th .arrow-down {
+  width:        0;
+  height:       0;
+  border-left:  7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top:   7px solid #FFF;
+}
+
