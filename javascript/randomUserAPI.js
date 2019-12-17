@@ -16,6 +16,9 @@ let RandomUser = {
         });
 
         User.reSort("lastName",false);
+      },
+      error: function(error) {
+        Table.showError(error);
       }
     });
   }

@@ -14,6 +14,16 @@ let Table = {
     document.getElementById("loadingCubeDiv").hidden = is_true ? false : true;
   },
 
+  showError: function(error) {
+    let errorMessage = document.getElementById("errorMessageDiv");
+
+    document.getElementById("tableBodyDiv").hidden   = true;
+    document.getElementById("loadingCubeDiv").hidden = true;
+    errorMessage.hidden                              = false;
+
+    errorMessage.innerHTML = "randomuser.me/api/: " + error.status + ", " + error.responseText;
+  },
+
   clear: function() {
     Table.isLoading(true);
 

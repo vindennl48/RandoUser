@@ -8,7 +8,7 @@
   background-color: #EEE;
 }
 
-.column .title {
+.column .title, .column .errorMessage {
   text-align: center;
 }
 
