@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://trello.com/b/9g3Db4re/brown-university-js-api">
-    <img src="./img/trello_screen.png" width="700px">
+    <img src="./img/trello_screen_02.png" width="700px">
   </a>
 </p>
 
