@@ -12,7 +12,7 @@ let RandomUser = {
         let results = data['results'];
 
         results.forEach(function(item, index) {
-          new User(item);
+          new User.create(item);
         });
 
         User.reSort(sortFunc);
