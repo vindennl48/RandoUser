@@ -2,12 +2,15 @@ let User = {
 
   users: [],
 
-  reSort: function(sortFunction) {
+  reSort: function(varName,is_desc) {
     // Clean out html table
     Table.clear();
 
     // Reload table with sorted users
-    User.users.sort(sortFunction);
+    User.users.sort(function(a,b) {
+      return Sort.sortUsers(a,b,varName,is_desc);
+    });
+
     for (let i=0; i<User.users.length; i++) {
       Table.createEntry(User.users[i]);
     }

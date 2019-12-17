@@ -1,11 +1,11 @@
 let RandomUser = {
 
-  getUsers: function(numUsers, sortFunc) {
+  getUsers: function() {
     $.ajax({
       url:      'https://randomuser.me/api/',
       dataType: 'json',
       data: {
-        results: numUsers,
+        results: 20,
         nat:     'US,CA'
       },
       success: function(data) {
@@ -15,7 +15,7 @@ let RandomUser = {
           new User.create(item);
         });
 
-        User.reSort(sortFunc);
+        User.reSort("lastName",false);
       }
     });
   }

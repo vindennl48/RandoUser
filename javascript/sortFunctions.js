@@ -1,122 +1,22 @@
 let Sort = {
 
-  firstName: function(a,b) {
-    let aa = a.firstName().toUpperCase();
-    let bb = b.firstName().toUpperCase();
-    if (aa === bb) {
-      return Sort.lastName(a,b);
-    } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
+  sortUsers: function(a,b,varName,is_desc) {
+    let aa = a[varName]();
+    let bb = b[varName]();
 
-  firstNameDesc: function(a,b) {
-    let aa = a.firstName().toUpperCase();
-    let bb = b.firstName().toUpperCase();
-    if (aa === bb) {
-      return Sort.lastNameDesc(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
+    if (typeof(aa) === "string") {
+      aa = aa.toUpperCase();
+      bb = bb.toUpperCase();
     }
-  },
 
-  lastName: function(a,b) {
-    let aa = a.lastName().toUpperCase();
-    let bb = b.lastName().toUpperCase();
-    if (aa === bb) {
-      return Sort.firstName(a,b);
+    if (varName !== "lastName" && aa === bb) {
+      return Sort.sortUsers(a,b,"lastName",is_desc);
     } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
-
-  lastNameDesc: function(a,b) {
-    let aa = a.lastName().toUpperCase();
-    let bb = b.lastName().toUpperCase();
-    if (aa === bb) {
-      return Sort.firstName(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
-    }
-  },
-
-  gender: function(a,b) {
-    let aa = a.gender();
-    let bb = b.gender();
-    if (aa === bb) {
-      return Sort.lastName(a,b);
-    } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
-
-  genderDesc: function(a,b) {
-    let aa = a.gender();
-    let bb = b.gender();
-    if (aa === bb) {
-      return Sort.lastNameDesc(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
-    }
-  },
-
-  country: function(a,b) {
-    let aa = a.country();
-    let bb = b.country();
-    if (aa === bb) {
-      return Sort.lastName(a,b);
-    } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
-
-  countryDesc: function(a,b) {
-    let aa = a.country();
-    let bb = b.country();
-    if (aa === bb) {
-      return Sort.lastNameDesc(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
-    }
-  },
-
-  dob: function(a,b) {
-    let aa = a.dobDate();
-    let bb = b.dobDate();
-    if (aa === bb) {
-      return Sort.lastName(a,b);
-    } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
-
-  dobDesc: function(a,b) {
-    let aa = a.dobDate();
-    let bb = b.dobDate();
-    if (aa === bb) {
-      return Sort.lastNameDesc(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
-    }
-  },
-
-  birthday: function(a,b) {
-    let aa = a.birthday();
-    let bb = b.birthday();
-    if (aa === bb) {
-      return Sort.lastName(a,b);
-    } else {
-      return (aa > bb ? 1 : -1);
-    }
-  },
-
-  birthdayDesc: function(a,b) {
-    let aa = a.birthday();
-    let bb = b.birthday();
-    if (aa === bb) {
-      return Sort.lastNameDesc(a,b);
-    } else {
-      return (aa < bb ? 1 : -1);
+      if (is_desc) {
+        return (aa < bb ? 1 : -1);
+      } else {
+        return (aa > bb ? 1 : -1);
+      }
     }
   },
 
@@ -140,7 +40,8 @@ let Sort = {
   },
 
   onClick: function(self) {
-    let sortFunction = self.dataset.sort;
+    let varName = self.dataset.sort;
+
     if ( self.hasAttribute("data-direction") ) {
       if ( self.dataset.direction === "asc" ) {
         self.dataset.direction = "desc";
@@ -155,9 +56,9 @@ let Sort = {
     Sort.setCarrot(self);
 
     if ( self.dataset.direction === "asc" ) {
-      User.reSort(Sort[sortFunction]);
+      User.reSort(varName,false);
     } else {
-      User.reSort(Sort[sortFunction+"Desc"]);
+      User.reSort(varName,true);
     }
   }
 

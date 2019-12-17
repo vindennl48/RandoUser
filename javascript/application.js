@@ -1,7 +1,7 @@
 (function() {
 
   document.addEventListener("DOMContentLoaded", function() {
-    RandomUser.getUsers(20, Sort.lastName);
+    RandomUser.getUsers();
 
     let elms = document.querySelectorAll("[data-sort]");
     elms.forEach(function(item, index) {
