@@ -10,6 +10,13 @@ let Table = {
   },
 
   isLoading: function(is_true) {
+    let body = document.querySelector("body");
+    body.className = "";
+
+    if (!is_true) {
+      body.classList.add("full-screen");
+    }
+
     document.getElementById("tableBodyDiv").hidden   = is_true ? true  : false;
     document.getElementById("loadingCubeDiv").hidden = is_true ? false : true;
   },

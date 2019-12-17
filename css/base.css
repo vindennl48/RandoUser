@@ -22,7 +22,10 @@ body {
 
 @media screen and (max-width: 800px) {
   body {
-    height:  100vh;
     padding: 3vw 3vw;
+  }
+
+  body.full-screen {
+    height: 100vh;
   }
 }
