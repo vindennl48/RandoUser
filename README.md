@@ -1,6 +1,6 @@
 # <img src="./img/favicon.ico" width="35px"> RandoUser
 
-<p align="center"><i>Brown University JS API Project</i></p>
+<p align="center"><i>Javascript API Project</i></p>
 
 <p align="center">
   <a href="https://vindennl48.github.io/RandoUser/">
